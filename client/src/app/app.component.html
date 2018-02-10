@@ -1,0 +1,158 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+
+</div>
+<form #searchForm="ngForm" novalidate="novalidate">
+  <div class="panel panel-warning">
+    <div class="well">
+      <!-- first row filter -->
+      <div class="row">
+        <div class="col-sm-4">
+
+          <div class="col-xs-12 col-sm-6 col-md-8 col-lg-6">
+            <input type="checkbox" [(ngModel)]="default" name="default" (change)="overallBox1($event)">
+          </div>
+          <label class="col-xs-12 col-sm-6 col-md-4 col-lg-6 control-label customLabel">
+								<strong></strong>
+							</label>
+        </div>
+        <div class="col-sm-4">
+          <label class="col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label customLabel">
+								<strong> State </strong>
+					</label>
+          <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+            <ng-selector name="selector" [(ngModel)]="selectedState" [options]="stateValues" [readonly]="!default"></ng-selector>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <label class="col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label customLabel">
+								<strong> District </strong>
+							</label>
+          <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+            <ng-selector name="selector" [(ngModel)]="selectedDistrict" [options]="districtValues" [readonly]="!default"></ng-selector>
+          </div>
+        </div>
+      </div>
+      <!-- second row filter -->
+      <div class="row">
+        <div class="col-sm-4">
+
+          <div class="col-xs-12 col-sm-6 col-md-8 col-lg-6">
+            <input type="checkbox" [(ngModel)]="cropYearFlag" name="cropYearFlag">
+          </div>
+          <label class="col-xs-12 col-sm-6 col-md-4 col-lg-6 control-label customLabel">
+								<strong>Crop Year</strong>
+				</label>
+        </div>
+        <div class="col-sm-4">
+          <label class="col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label customLabel">
+								<strong> From </strong>
+							</label>
+          <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+            <ng-selector name="selector" [(ngModel)]="selectedCropYearFrom" [options]="cropValuesFrom" [readonly]="!cropYearFlag"></ng-selector>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <label class="col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label customLabel">
+								<strong> To </strong>
+							</label>
+          <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+            <ng-selector name="selector" [(ngModel)]="selectedCropYearTo" [options]="cropValuesTo" [readonly]="!cropYearFlag"></ng-selector>
+          </div>
+        </div>
+      </div>
+      <!-- Third row filter -->
+      <div class="row">
+        <div class="col-sm-4">
+
+          <div class="col-xs-12 col-sm-6 col-md-8 col-lg-6">
+            <input type="checkbox" [(ngModel)]="cropandSeasonFlag" name="cropandSeasonFlag" disabled>
+          </div>
+          <label class="col-xs-12 col-sm-6 col-md-4 col-lg-6 control-label customLabel">
+								<strong>Crop & Season</strong>
+          </label>
+        </div>
+        <div class="col-sm-4">
+          <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+            <input type="checkbox" [(ngModel)]="cropFlag" name="cropandSeasonFlag">
+          </div>
+          <label class="col-xs-12 col-sm-2 col-md-2 col-lg-2 control-label customLabel">
+								<strong> Crop </strong>
+					</label>
+          <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+            <ng-selector name="selector" [(ngModel)]="selectedCrop" [options]="cropValues" [readonly]="!cropFlag"></ng-selector>
+          </div>
+        </div>
+        
+        <div class="col-sm-4">
+         <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+            <input type="checkbox" [(ngModel)]="SeasonFlag" name="cropandSeasonFlag">
+          </div>
+          <label  class="col-xs-12 col-sm-2 col-md-2 col-lg-2 control-label customLabel">
+								<strong> Season </strong>
+					</label>
+          <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+            <ng-selector name="selector" [(ngModel)]="selectedSeason" [options]="seasonValues" [readonly]="!SeasonFlag"></ng-selector>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fourth row filter -->
+      <div class="row">
+
+        <div class="col-sm-4">
+          <div class="col-xs-12 col-sm-6 col-md-8 col-lg-6">
+            <input type="checkbox" [(ngModel)]="avgFlag" name="avgFlag">
+          </div>
+          <label class="col-xs-12 col-sm-6 col-md-4 col-lg-6 control-label customLabel">
+								<strong>Average</strong>
+					</label>
+        </div>
+        <div class="col-sm-4">
+
+          <div class="col-xs-12 col-sm-6 col-md-8 col-lg-6">
+            <input type="checkbox" [(ngModel)]="maxFlag" name="maxFlag">
+          </div>
+          <label class="col-xs-12 col-sm-6 col-md-4 col-lg-6 control-label customLabel">
+								<strong>Max</strong>
+							</label>
+        </div>
+
+        <div class="col-sm-4">
+           <div class="col-xs-12 col-sm-6 col-md-8 col-lg-6">
+            <input type="checkbox" [(ngModel)]="overall" name="overall" (change)="overallBox($event)">
+          </div>
+           <label class="col-xs-12 col-sm-6 col-md-4 col-lg-6 control-label customLabel">
+								<strong>Overall</strong>
+							</label>
+          <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+            <button type="submit" class="btn btn-primary" (click)="processResult()">{{searchTxt}}</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</form>
+<div class="row well">
+  <label class="col-sm-6 col-md-4 col-lg-6 control-label" *ngIf="avgFlag">
+								<strong>Average : {{avgValue}} </strong>
+</label>
+  <label class=" col-sm-6 col-md-4 col-lg-6 control-label" *ngIf="maxFlag">
+								<strong>Max  : {{maxValue}}</strong>
+</label>
+
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <input *ngIf="config.filtering" placeholder="Filter all columns" [ngTableFiltering]="config.filtering" class="form-control"
+      (tableChanged)="onChangeTable(config)" />
+  </div>
+</div>
+<br>
+<ng-table [config]="config" (tableChanged)="onChangeTable(config)" (cellClicked)="onCellClick($event)" [rows]="rows" [columns]="columns">
+</ng-table>
+<pagination *ngIf="config.paging" class="pagination-sm" [(ngModel)]="page" [totalItems]="length" [itemsPerPage]="itemsPerPage"
+  [maxSize]="maxSize" [boundaryLinks]="true" [rotate]="false" (pageChanged)="onChangeTable(config, $event)" (numPages)="numPages = $event">
+</pagination>
+<pre *ngIf="config.paging" class="card card-block card-header">Page: {{page}} / {{numPages}}</pre>
